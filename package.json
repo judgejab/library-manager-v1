@@ -1,0 +1,23 @@
+{
+  "name": "library-manager-v1",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./bin/www"
+  },
+  "author": "Matt Cleary",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "debug": "^2.2.0",
+    "express": "^4.14.0",
+    "method-override": "^2.3.6",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.11.0",
+    "pug": "^2.0.0-beta6",
+    "sequelize": "^3.24.3",
+    "sequelize-cli": "^2.4.0",
+    "sqlite3": "^3.1.6"
+  }
+}

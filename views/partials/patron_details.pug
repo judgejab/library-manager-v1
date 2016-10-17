@@ -1,0 +1,54 @@
+extends ../layout
+
+block content
+  h1 Patron: 
+    =title
+  |     
+  form(action="/patrons/" + patron.id + "?_method=PUT", method="post")
+    include errors
+    include patron_form       
+    p
+      input(type='submit', value='Update')
+  |    
+  if(results.length) 
+    h2 Loan History
+    |     
+    table
+      thead
+        tr
+          th Book
+          |                 
+          th Patron 
+          |                 
+          th Loaned on
+          |                 
+          th Return by 
+          |                 
+          th Returned on
+          |                 
+          th Action
+      |         
+      tbody
+        each result in results
+          tr
+            td
+              a(href='/books/' + result.book.id)=result.book.title
+            |                 
+            td
+              a(href='/patrons/' + patron.id)
+                =result.patron.first_name 
+                | 
+                =result.patron.last_name
+            |                 
+            td= result.loaned_on
+            |                 
+            td= result.return_by
+            |                 
+            td= result.returned_on
+            |                 
+            td
+              if (result.returned_on === null)
+                a.button(href='/loans/' + result.id + '/return') Return Book
+  else
+    h2 Loan History 
+    span No History Yet  

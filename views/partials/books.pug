@@ -1,0 +1,43 @@
+extends ../layout
+
+block content
+  h1= title
+  |     
+  p
+    a.button(href='/books/new') Create New Book
+  |     
+  p
+    | Filters 
+    a(href='/books/page/1') All
+    |  | 
+    a(href='/books/page/1?filter=overdue') Overdue
+    |  | 
+    a(href='/books/page/1?filter=checked_out') Checked Out
+  |     
+  p#total-items Total Items: 
+    span#page-count=count
+  table
+    thead
+      tr
+        th Title
+        |                 
+        th Author
+        |                 
+        th Genre
+        |                 
+        th Year Released
+    |         
+    tbody
+      each book in books
+        tr
+          td
+            a(href='/books/' + book.id)
+              =book.title
+          |                 
+          td= book.author
+          |                 
+          td= book.genre
+          |                 
+          td= book.first_published
+          | 
+  p#pagination
